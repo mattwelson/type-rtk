@@ -1,6 +1,5 @@
 import type { JSX } from "react"
 import { useState } from "react"
-import styles from "./Quotes.module.css"
 import { useGetQuotesQuery } from "./quotesApiSlice"
 
 const options = [5, 10, 20, 30]
@@ -29,10 +28,10 @@ export const Quotes = (): JSX.Element | null => {
 
   if (isSuccess) {
     return (
-      <div className={styles.container}>
+      <div className="container">
         <h3>Select the Quantity of Quotes to Fetch:</h3>
         <select
-          className={styles.select}
+          className="border border-gray-300 rounded py-2 px-4"
           value={numberOfQuotes}
           onChange={e => {
             setNumberOfQuotes(Number(e.target.value))

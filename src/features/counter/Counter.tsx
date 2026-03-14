@@ -1,7 +1,6 @@
 import type { JSX } from "react"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import styles from "./Counter.module.css"
 import {
   decrement,
   increment,
@@ -22,28 +21,28 @@ export const Counter = (): JSX.Element => {
 
   return (
     <div>
-      <div className={styles.row}>
+      <div className="flex items-center gap-4">
         <button
-          className={styles.button}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
         </button>
-        <label aria-label="Count" className={styles.value}>
+        <label aria-label="Count" className="text-2xl font-bold">
           {count}
         </label>
         <button
-          className={styles.button}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
         </button>
       </div>
-      <div className={styles.row}>
+      <div className="flex items-center gap-4">
         <input
-          className={styles.textbox}
+          className="border border-gray-300 rounded py-2 px-4"
           aria-label="Set increment amount"
           value={incrementAmount}
           type="number"
@@ -52,13 +51,13 @@ export const Counter = (): JSX.Element => {
           }}
         />
         <button
-          className={styles.button}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
         </button>
         <button
-          className={styles.asyncButton}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
           disabled={status !== "idle"}
           onClick={() => {
             void dispatch(incrementAsync(incrementValue))
@@ -67,7 +66,7 @@ export const Counter = (): JSX.Element => {
           Add Async
         </button>
         <button
-          className={styles.button}
+          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
             dispatch(incrementIfOdd(incrementValue))
           }}
