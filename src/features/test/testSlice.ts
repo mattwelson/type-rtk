@@ -1,6 +1,9 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
 import type { CharEntry, TestStatus } from "../../app/types"
+import { buildCharMap } from "@/lib/charMap"
+import { getWords } from "@/lib/getWords"
+import type { AppDispatch, RootState } from "@/app/store"
 
 const initialState = {
   status: "idle" as TestStatus,
@@ -18,7 +21,7 @@ export const testSlice = createAppSlice({
   reducers: {
     initialiseTest: (state, action: PayloadAction<{ words: string[] }>) => {
       state.words = action.payload.words
-      state.chars = buildCharMap(action.payload.words)
+      state.chars = buildCharMap(state.words)
       state.status = "idle"
       state.currentIndex = 0
       state.errors = 0
@@ -61,3 +64,11 @@ export const testSlice = createAppSlice({
     },
   },
 })
+
+// a "micro-thunk" — no async, just accesses full state
+export const initialiseTest =
+  () => (dispatch: AppDispatch, getState: () => RootState) => {
+    const settings = getState().settings
+    const words = getWords(settings.difficulty).text.split(" ")
+    dispatch(testSlice.actions.initialiseTest({ words }))
+  }

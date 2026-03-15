@@ -1,5 +1,5 @@
 export type Mode = "words" | "timed"
-export type Difficulty = "easy" | "normal" | "hard"
+export type Difficulty = "easy" | "medium" | "hard"
 
 export type Settings = {
   mode: Mode
@@ -16,7 +16,7 @@ export type CharEntry = {
   state: CharState
 }
 
-export type TestStatus = "idle" | "active" | "finished"
+export type TestStatus = "loading" | "idle" | "active" | "finished"
 
 export type TestResult = {
   wpm: number

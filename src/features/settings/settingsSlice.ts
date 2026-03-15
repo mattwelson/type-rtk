@@ -7,7 +7,7 @@ const initialState: Settings = {
   mode: "words",
   wordCount: 25,
   duration: 30,
-  difficulty: "normal",
+  difficulty: "medium",
 }
 
 export const settingsSlice = createSlice({
