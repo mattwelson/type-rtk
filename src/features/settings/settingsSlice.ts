@@ -4,9 +4,9 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { Mode, Difficulty, Settings } from "../../app/types"
 
 const initialState: Settings = {
-  mode: "words",
+  mode: "timed",
   wordCount: 25,
-  duration: 30,
+  duration: 60,
   difficulty: "medium",
 }
 
@@ -28,3 +28,6 @@ export const settingsSlice = createSlice({
     },
   },
 })
+
+export const { setMode, setWordCount, setDuration, setDifficulty } =
+  settingsSlice.actions

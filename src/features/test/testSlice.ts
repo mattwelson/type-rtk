@@ -62,8 +62,16 @@ export const testSlice = createAppSlice({
     expireTest: state => {
       state.status = "finished"
     },
+    start: state => {
+      if (state.status === "active") return
+      state.status = "active"
+      state.startTime = Date.now()
+    },
   },
 })
+
+export const { start, keyPressed, backspace, tick, expireTest } =
+  testSlice.actions
 
 // a "micro-thunk" — no async, just accesses full state
 export const initialiseTest =

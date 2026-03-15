@@ -12,6 +12,15 @@ export const selectElapsedSeconds = (state: RootState) => {
   return Math.round(elapsed / 1000)
 }
 
+export const selectRemainingSeconds = createSelector(
+  (state: RootState) => state.test.elapsed,
+  (state: RootState) => state.settings.duration,
+  (elapsed, duration) => {
+    const remaining = duration * 1000 - elapsed
+    return Math.max(0, Math.round(remaining / 1000))
+  },
+)
+
 export const selectWpm = createSelector(
   (state: RootState) => state.test.currentIndex,
   selectElapsedSeconds,
