@@ -1,10 +1,9 @@
-// src/store/testSlice.test.ts
 import type { RootState } from "@/app/store"
-import { testSlice } from "./testSlice"
+import { typingTestSlice } from "./typingTestSlice"
 import { selectAccuracy, selectElapsedSeconds, selectWpm } from "./selectors"
 
-const { keyPressed, backspace, initialiseTest } = testSlice.actions
-const reducer = testSlice.reducer
+const { keyPressed, backspace, initialiseTest } = typingTestSlice.actions
+const reducer = typingTestSlice.reducer
 
 describe("testSlice", () => {
   const baseState = reducer(undefined, initialiseTest({ words: ["hit"] }))
@@ -59,7 +58,7 @@ describe("selectors", () => {
   describe("selectAccuracy", () => {
     it("selectAccuracy returns 100 when no chars typed", () => {
       const state = {
-        test: {
+        typingTest: {
           currentIndex: 0,
           errors: 0,
         },
@@ -69,7 +68,7 @@ describe("selectors", () => {
 
     it("selectAccuracy returns 100 when no errors", () => {
       const state = {
-        test: {
+        typingTest: {
           currentIndex: 5,
           errors: 0,
         },
@@ -79,7 +78,7 @@ describe("selectors", () => {
 
     it("selectAccuracy returns correct percentage when there are errors", () => {
       const state = {
-        test: {
+        typingTest: {
           currentIndex: 5,
           errors: 1,
         },
@@ -91,7 +90,7 @@ describe("selectors", () => {
   describe("selectElapsedSeconds", () => {
     it("returns the elapsed time in seconds", () => {
       const state = {
-        test: {
+        typingTest: {
           elapsed: 4500,
         },
       } as RootState
@@ -100,7 +99,7 @@ describe("selectors", () => {
 
     it("rounds the elapsed time to the nearest second", () => {
       const state = {
-        test: {
+        typingTest: {
           elapsed: 12345,
         },
       } as RootState
@@ -111,7 +110,7 @@ describe("selectors", () => {
   describe("selectWpm", () => {
     it("returns the words per minute", () => {
       const state = {
-        test: {
+        typingTest: {
           elapsed: 4500,
           currentIndex: 10,
         },

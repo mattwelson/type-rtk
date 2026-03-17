@@ -1,25 +1,27 @@
+import { useAppSelector } from "./app/hooks"
 import logo from "./assets/images/logo-large.svg"
-import { Separator } from "./components/ui/separator"
-import { Settings } from "./features/settings/Settings"
-import { LiveResult } from "./features/test/LiveResult"
-import { TypingTest } from "./features/test/TypingTest"
+import { PersonalBest } from "./features/history/PersonalBest"
+import { Results } from "./features/typingTest/Results"
+import { TypingTest } from "./features/typingTest/TypingTest"
+import { useTypingTest } from "./hooks/useTypingTest"
 
-export const App = () => (
-  <div className="App bg-background text-foreground min-h-screen p-4">
-    <header className="max-w-3xl">
-      <img
-        src={logo}
-        className="size-10 object-left object-cover md:size-auto"
-        alt="Typing Speed Test"
-      />
-      {/* TODO: add PB here based on history */}
-    </header>
-    <div className="grid lg:grid-cols-2 my-4 gap-4">
-      <LiveResult />
-      <Settings />
+export const App = () => {
+  const testStatus = useAppSelector(s => s.typingTest.status)
+  useTypingTest()
+
+  return (
+    <div className="App bg-background text-foreground min-h-screen p-4">
+      <header className="max-w-3xl flex justify-between mx-auto">
+        <img
+          src={logo}
+          className="h-10 w-10 object-left object-cover md:w-auto"
+          alt="Typing Speed Test"
+        />
+        <PersonalBest />
+      </header>
+
+      {["idle", "active"].includes(testStatus) && <TypingTest />}
+      {testStatus === "finished" && <Results />}
     </div>
-    <Separator />
-
-    <TypingTest />
-  </div>
-)
+  )
+}

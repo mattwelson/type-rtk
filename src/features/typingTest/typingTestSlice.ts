@@ -15,8 +15,8 @@ const initialState = {
   elapsed: 0,
 }
 
-export const testSlice = createAppSlice({
-  name: "test",
+export const typingTestSlice = createAppSlice({
+  name: "typingTest",
   initialState,
   reducers: {
     initialiseTest: (state, action: PayloadAction<{ words: string[] }>) => {
@@ -71,12 +71,12 @@ export const testSlice = createAppSlice({
 })
 
 export const { start, keyPressed, backspace, tick, expireTest } =
-  testSlice.actions
+  typingTestSlice.actions
 
 // a "micro-thunk" — no async, just accesses full state
 export const initialiseTest =
   () => (dispatch: AppDispatch, getState: () => RootState) => {
     const settings = getState().settings
     const words = getWords(settings.difficulty).text.split(" ")
-    dispatch(testSlice.actions.initialiseTest({ words }))
+    dispatch(typingTestSlice.actions.initialiseTest({ words }))
   }

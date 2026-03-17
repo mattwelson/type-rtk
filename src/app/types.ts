@@ -26,3 +26,9 @@ export type TestResult = {
   mode: Mode
   timestamp: number
 }
+
+export type HistoryState = {
+  results: TestResult[]
+  best: TestResult | null
+  totalTests: number
+}

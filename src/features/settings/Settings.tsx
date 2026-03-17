@@ -10,7 +10,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import type { Difficulty, Mode } from "@/app/types"
 import { Separator } from "@/components/ui/separator"
 import { useEffect } from "react"
-import { initialiseTest } from "../test/testSlice"
+import { initialiseTest } from "../typingTest/typingTestSlice"
 
 const difficulties = [
   { value: "easy", label: "Easy" },
