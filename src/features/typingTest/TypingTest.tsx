@@ -35,7 +35,7 @@ export function TypingTest() {
             "blur-xs": status == "idle",
           })}
         >
-          <div className="text-center mx-auto max-w-xl text-xl text-muted-foreground">
+          <div className="text-center mx-auto max-w-xl text-3xl text-muted-foreground">
             {chars.map((c, i) => (
               <span
                 key={i}

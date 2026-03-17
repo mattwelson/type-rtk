@@ -8,6 +8,9 @@ import {
   selectIsFirstTestResult,
   selectWasBestResult,
 } from "../history/historySlice"
+import star1 from "@/assets/images/pattern-star-1.svg"
+import star2 from "@/assets/images/pattern-star-2.svg"
+import confetti from "@/assets/images/pattern-confetti.svg"
 
 export function Results() {
   const wpm = useAppSelector(selectWpm)
@@ -21,6 +24,22 @@ export function Results() {
 
   return (
     <div className="relative my-16 text-center gap-4 flex flex-col items-center">
+      <img
+        src={star1}
+        alt="Star Pattern"
+        className="size-12 fixed right-1/10 top-1/2"
+      />
+      <img
+        src={star2}
+        alt="Star Pattern"
+        className="size-8 fixed left-1/8 top-1/6"
+      />
+      <img
+        src={confetti}
+        alt="Confetti"
+        className="fixed bottom-0 h-80 object-cover"
+      />
+
       {wasBestResult && !isFirstTest ? (
         <>
           <PartyPopper className="size-16 text-yellow-300" />
