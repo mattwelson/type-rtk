@@ -56,8 +56,8 @@ export function Results() {
           )}
         </>
       )}
-      <div className="grid grid-cols-3 gap-8 w-full max-w-md text-muted-foreground">
-        <div className="border-muted border p-2 rounded flex flex-col items-start">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-md text-muted-foreground text-left">
+        <div className="border-muted border p-2 rounded flex flex-col">
           <p className="text-sm">WPM:</p>
           <p className="text-2xl font-bold">{wpm}</p>
         </div>
@@ -71,7 +71,7 @@ export function Results() {
             {accuracy}%
           </p>
         </div>
-        <div className="border-muted border p-2 rounded flex flex-col items-end">
+        <div className="border-muted border p-2 rounded flex flex-col">
           <p className="text-sm">Characters:</p>
           <p className="text-2xl font-bold">
             <span className="text-green-500">{characters}</span>/
